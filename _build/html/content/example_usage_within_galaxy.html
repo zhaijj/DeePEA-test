@@ -1,0 +1,890 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Step-by-step protocols &mdash; DeePEA  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="DeepEA: a Galaxy-based framework for exploration and large-scale analysis of epitranscriptome sequencing data" href="../index.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> DeePEA
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Step-by-step protocols</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#pre-analysis">PRE-ANALYSIS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#how-do-i-import-the-data-provided-by-the-server-and-how-do-i-verify-that-my-input-output-is-the-same-as-the-sample-data">How do I <strong>import the data</strong> provided by the server, and how do I verify that my input/output is the same as the sample data ?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#i-have-downloaded-received-a-sra-bam-fa-txt-file-how-to-upload-local-data">I have downloaded/received a sra/bam/fa/txt… file - How to upload local data ?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#how-to-download-and-extract-data-from-short-reads-achive-sra-database">How to download and extract data from Short Reads Achive (SRA database) ?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#how-to-perform-raw-sequence-quality-control-filtering">How to perform raw sequence quality control, filtering ?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#core-analysis">CORE ANALYSIS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#how-to-perform-sequence-alignment">How to perform sequence alignment ?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#how-to-obtain-the-identify-cmrs">How to obtain the identify CMRs?</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#the-merip-seq-data">The MeRIP-seq data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#the-rna-bsseq-data">The RNA-BSseq data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#the-pseudo-seq-data">The Pseudo-seq data</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#how-cmrs-visualization-to-examine-their-distribution">How CMRs visualization to examine their distribution ?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#i-have-a-known-motif-how-to-check-the-distribution-of-this-motif-in-a-set-of-data">I have a known motif, how to check the distribution of this motif in a set of data ?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#how-to-perform-de-novo-motifs-discovery-analysis">How to perform de-novo motifs discovery analysis?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#how-to-get-a-quantified-level-of-modification">How to get a quantified level of modification ?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#i-have-multiple-duplicate-samples-and-stress-experiments-how-to-get-a-differential-modification-information">I have multiple duplicate samples and stress experiments, how to get a differential modification information ?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#how-to-annotate-the-cmrs-region">How to annotate the CMRs region?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#how-to-predict-modification-driven-genes-and-associated-networks">How to predict modification driven genes and associated networks ?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#how-to-perform-functional-enrichment-analyze-for-cmr-related-gene">How to perform functional enrichment analyze for CMR related gene?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#advanced-analysis">Advanced ANALYSIS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#i-have-interval-information-for-cmrs-how-to-get-his-precise-position">I have interval information for CMRs, how to get his precise position ?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#how-to-predict-potential-cmrs-in-the-whole-transcribed-region">How to predict potential CMRs in the whole transcribed region ?</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">DeePEA</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Step-by-step protocols</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/content/example_usage_within_galaxy.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="step-by-step-protocols">
+<h1>Step-by-step protocols<a class="headerlink" href="#step-by-step-protocols" title="Permalink to this headline">¶</a></h1>
+<p>This section should give you an overview of how to do many common tasks. We’re using screenshots from Galaxy here.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Do let us know if you spot things that are missing or should be explained better! Just send an email to <a class="reference external" href="mailto:q2516581&#37;&#52;&#48;126&#46;com">q2516581<span>&#64;</span>126<span>&#46;</span>com</a></p>
+</div>
+<p>The tool is still in beta, there may be unstable connections or other conditions, and generally waiting and refreshing may solve such problems. We will continue to optimize server performance.</p>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">We provide a lot of sample data, please focus on the first section.</p>
+</div>
+<div class="contents local topic" id="how-to-do">
+<p class="topic-title first">How to do…?</p>
+<ul class="simple">
+<li><a class="reference internal" href="#pre-analysis" id="id1">PRE-ANALYSIS</a><ul>
+<li><a class="reference internal" href="#how-do-i-import-the-data-provided-by-the-server-and-how-do-i-verify-that-my-input-output-is-the-same-as-the-sample-data" id="id2">How do I <strong>import the data</strong> provided by the server, and how do I verify that my input/output is the same as the sample data ?</a></li>
+<li><a class="reference internal" href="#i-have-downloaded-received-a-sra-bam-fa-txt-file-how-to-upload-local-data" id="id3">I have downloaded/received a sra/bam/fa/txt… file - How to upload local data ?</a></li>
+<li><a class="reference internal" href="#how-to-download-and-extract-data-from-short-reads-achive-sra-database" id="id4">How to download and extract data from Short Reads Achive (SRA database) ?</a></li>
+<li><a class="reference internal" href="#how-to-perform-raw-sequence-quality-control-filtering" id="id5">How to perform raw sequence quality control, filtering ?</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#core-analysis" id="id6">CORE ANALYSIS</a><ul>
+<li><a class="reference internal" href="#how-to-perform-sequence-alignment" id="id7">How to perform sequence alignment ?</a></li>
+<li><a class="reference internal" href="#how-to-obtain-the-identify-cmrs" id="id8">How to obtain the identify CMRs?</a><ul>
+<li><a class="reference internal" href="#the-merip-seq-data" id="id9">The MeRIP-seq data</a></li>
+<li><a class="reference internal" href="#the-rna-bsseq-data" id="id10">The RNA-BSseq data</a></li>
+<li><a class="reference internal" href="#the-pseudo-seq-data" id="id11">The Pseudo-seq data</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#how-cmrs-visualization-to-examine-their-distribution" id="id12">How CMRs visualization to examine their distribution ?</a></li>
+<li><a class="reference internal" href="#i-have-a-known-motif-how-to-check-the-distribution-of-this-motif-in-a-set-of-data" id="id13">I have a known motif, how to check the distribution of this motif in a set of data ?</a></li>
+<li><a class="reference internal" href="#how-to-perform-de-novo-motifs-discovery-analysis" id="id14">How to perform de-novo motifs discovery analysis?</a></li>
+<li><a class="reference internal" href="#how-to-get-a-quantified-level-of-modification" id="id15">How to get a quantified level of modification ?</a></li>
+<li><a class="reference internal" href="#i-have-multiple-duplicate-samples-and-stress-experiments-how-to-get-a-differential-modification-information" id="id16">I have multiple duplicate samples and stress experiments, how to get a differential modification information ?</a></li>
+<li><a class="reference internal" href="#how-to-annotate-the-cmrs-region" id="id17">How to annotate the CMRs region?</a></li>
+<li><a class="reference internal" href="#how-to-predict-modification-driven-genes-and-associated-networks" id="id18">How to predict modification driven genes and associated networks ?</a></li>
+<li><a class="reference internal" href="#how-to-perform-functional-enrichment-analyze-for-cmr-related-gene" id="id19">How to perform functional enrichment analyze for CMR related gene?</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#advanced-analysis" id="id20">Advanced ANALYSIS</a><ul>
+<li><a class="reference internal" href="#i-have-interval-information-for-cmrs-how-to-get-his-precise-position" id="id21">I have interval information for CMRs, how to get his precise position ?</a></li>
+<li><a class="reference internal" href="#how-to-predict-potential-cmrs-in-the-whole-transcribed-region" id="id22">How to predict potential CMRs in the whole transcribed region ?</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="pre-analysis">
+<h2><a class="toc-backref" href="#id1">PRE-ANALYSIS</a><a class="headerlink" href="#pre-analysis" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="how-do-i-import-the-data-provided-by-the-server-and-how-do-i-verify-that-my-input-output-is-the-same-as-the-sample-data">
+<h3><a class="toc-backref" href="#id2">How do I <strong>import the data</strong> provided by the server, and how do I verify that my input/output is the same as the sample data ?</a><a class="headerlink" href="#how-do-i-import-the-data-provided-by-the-server-and-how-do-i-verify-that-my-input-output-is-the-same-as-the-sample-data" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Click the <strong>Share Data</strong> → <strong>Data Libraries</strong> in the top bar.</li>
+</ul>
+<img alt="../_images/q7.jpg" src="../_images/q7.jpg" />
+<ul class="simple">
+<li>Find and select the <strong>dataset</strong> you want to use, whatever in ‘Genome and annotation data’ or ‘Step-by-step protocols’.[Please check]</li>
+</ul>
+<img alt="../_images/q9.jpg" src="../_images/q9.jpg" />
+<ul class="simple">
+<li>Click the <strong>To history</strong> → <strong>as Datasets</strong> , then Click <strong>Import</strong> to import data into History bar.</li>
+</ul>
+<img alt="../_images/q10.jpg" src="../_images/q10.jpg" />
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">Here we provide a partially downloaded reference genome and annotation file, as well as parts of example output/input file for the functions.</p>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="i-have-downloaded-received-a-sra-bam-fa-txt-file-how-to-upload-local-data">
+<h3><a class="toc-backref" href="#id3">I have downloaded/received a sra/bam/fa/txt… file - How to upload local data ?</a><a class="headerlink" href="#i-have-downloaded-received-a-sra-bam-fa-txt-file-how-to-upload-local-data" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Click <strong>Get Data</strong> in the homepage (see figure below) to upload files.</li>
+</ul>
+<img alt="../_images/q1.jpg" src="../_images/q1.jpg" />
+<ul class="simple">
+<li>And then you will see the following interface:</li>
+</ul>
+<img alt="../_images/q2.jpg" src="../_images/q2.jpg" />
+<ul class="simple">
+<li>Next, Click the button <strong>Choose local file</strong> and select a file you would like to upload , you will see the following interface:</li>
+</ul>
+<img alt="../_images/q3.jpg" src="../_images/q3.jpg" />
+<ul class="simple">
+<li>Then click <strong>Start</strong> to upload file.</li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="how-to-download-and-extract-data-from-short-reads-achive-sra-database">
+<h3><a class="toc-backref" href="#id4">How to download and extract data from Short Reads Achive (SRA database) ?</a><a class="headerlink" href="#how-to-download-and-extract-data-from-short-reads-achive-sra-database" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Click the <strong>Sequence Data Preparation</strong> and select tool <strong>Download Sequence or Annotation File</strong>.</li>
+<li><dl class="first docutils">
+<dt>Input:</dt>
+<dd><ul class="first last">
+<li>Accession: A single SRA accession ID (start with SRR, DRR or ERR).</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Output</dt>
+<dd><ul class="first last">
+<li>The compressed sequencing datasets with SRA format.</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li>Submit the task and wait for the task to complete</li>
+</ul>
+<img alt="../_images/q4.jpg" src="../_images/q4.jpg" />
+<ul class="simple">
+<li>Click the <strong>Sequence Data Preparation</strong> and select tool <strong>Extract Sequence Dataset</strong>.</li>
+<li><dl class="first docutils">
+<dt>Input:</dt>
+<dd><ul class="first last">
+<li>Input sra file: The sequence data (SRA format) (the output from <strong>Download Sequence or Annotation File</strong>).</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Output</dt>
+<dd><ul class="first last">
+<li>Fastq format file.</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li>Submit the task and wait for the task to complete.</li>
+</ul>
+<img alt="../_images/q5.jpg" src="../_images/q5.jpg" />
+</div>
+<hr class="docutils" />
+<div class="section" id="how-to-perform-raw-sequence-quality-control-filtering">
+<h3><a class="toc-backref" href="#id5">How to perform raw sequence quality control, filtering ?</a><a class="headerlink" href="#how-to-perform-raw-sequence-quality-control-filtering" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><strong>Upload</strong> data or add <strong>Filter and quality control</strong> dataset in <strong>Data Libraries</strong> to history</li>
+</ul>
+<img alt="../_images/q12.jpg" src="../_images/q12.jpg" />
+<ul class="simple">
+<li>Click the <strong>Quality Control</strong> and select tool <strong>Quality and Trimmer of Reads</strong>.</li>
+<li><dl class="first docutils">
+<dt>Input:</dt>
+<dd><ul class="first last">
+<li>Input 1: Single-end or Paired-end FASTQ or FASTQ.GZ reads.</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Output</dt>
+<dd><ul class="first last">
+<li>Quality and Trimmer of Reads</li>
+<li>HTML report</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<img alt="../_images/q11.jpg" src="../_images/q11.jpg" />
+</div>
+</div>
+<div class="section" id="core-analysis">
+<h2><a class="toc-backref" href="#id6">CORE ANALYSIS</a><a class="headerlink" href="#core-analysis" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="how-to-perform-sequence-alignment">
+<h3><a class="toc-backref" href="#id7">How to perform sequence alignment ?</a><a class="headerlink" href="#how-to-perform-sequence-alignment" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><strong>Upload</strong> data or add <strong>Maping</strong> dataset in <strong>Data Libraries</strong> to history</li>
+</ul>
+<ul class="simple">
+<li>Click the <strong>Mapping</strong> and select tool <strong>HISAT2</strong>.</li>
+<li><dl class="first docutils">
+<dt>Input:</dt>
+<dd><ul class="first last">
+<li>Reference genome.: Select a reference genome.</li>
+<li>FASTA/Q file: Single-end or Paired-end FASTQ or FASTQ.GZ reads.</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Output</dt>
+<dd><ul class="first last">
+<li>Aligned read (BAM format)</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<img alt="../_images/q13.jpg" src="../_images/q13.jpg" />
+<ul class="simple">
+<li>Waiting for a moment. (About ten minutes)</li>
+</ul>
+</div>
+<div class="section" id="how-to-obtain-the-identify-cmrs">
+<h3><a class="toc-backref" href="#id8">How to obtain the identify CMRs?</a><a class="headerlink" href="#how-to-obtain-the-identify-cmrs" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="the-merip-seq-data">
+<h4><a class="toc-backref" href="#id9">The MeRIP-seq data</a><a class="headerlink" href="#the-merip-seq-data" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><strong>Upload</strong> data or add <strong>CMR Calling from the MeRIP-seq data</strong> in <strong>Data Libraries</strong> to history</li>
+</ul>
+<ul class="simple">
+<li>Click the <strong>CMR Profiling and Differential CMR Analysis</strong> and select tool <strong>Peak calling</strong>.</li>
+<li><dl class="first docutils">
+<dt>Input:</dt>
+<dd><ul class="first last">
+<li>Input sample: The input control experiment in BAM format.</li>
+<li>RIP sample: The RIP experiment in BAM format.</li>
+<li>Reference genome: The Reference genome sequences with FASTA format.</li>
+<li>Reference annotation file: The Reference genome annotation file with GTF/GFF3 format.</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Output</dt>
+<dd><ul class="first last">
+<li>The enriched peak region matrix in BED format.</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<img alt="../_images/q25.jpg" src="../_images/q25.jpg" />
+</div>
+<div class="section" id="the-rna-bsseq-data">
+<h4><a class="toc-backref" href="#id10">The RNA-BSseq data</a><a class="headerlink" href="#the-rna-bsseq-data" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><strong>Upload</strong> data or add <strong>CMR Calling from the RNA-BSseq data</strong> in <strong>Data Libraries</strong> to history</li>
+</ul>
+<ul class="simple">
+<li>Click the <strong>CMR Profiling and Differential CMR Analysis</strong> and select tool <strong>Calling m5C</strong>.</li>
+<li><dl class="first docutils">
+<dt>Input:</dt>
+<dd><ul class="first last">
+<li>FASTQ file: The FASTQ format sequencing file.</li>
+<li>Reference genome: The reference genome sequences in FASTA format.</li>
+<li>Reference annotation file (GTF): The reference annotation file in GTF format.</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Output</dt>
+<dd><ul class="first last">
+<li>The m5C sites in BED format.</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<img alt="../_images/q26.jpg" src="../_images/q26.jpg" />
+</div>
+<div class="section" id="the-pseudo-seq-data">
+<h4><a class="toc-backref" href="#id11">The Pseudo-seq data</a><a class="headerlink" href="#the-pseudo-seq-data" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><strong>Upload</strong> data or add <strong>CMR Calling from the Pseudo-seq data</strong> in <strong>Data Libraries</strong> to history</li>
+</ul>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">This section provides examples of the set of data results in data. Due to the long calculation time, please log in and run to prevent the project from being automatically cleaned up.</p>
+</div>
+<ul class="simple">
+<li>Click the <strong>CMR Profiling and Differential CMR Analysis</strong> and select tool <strong>Calling pseudoU</strong>.</li>
+<li><dl class="first docutils">
+<dt>Input:</dt>
+<dd><ul class="first last">
+<li>Read BAM files: The input control experiment in BAM format.</li>
+<li>Reference genome: The Reference genome sequences with FASTA format.</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Output</dt>
+<dd><ul class="first last">
+<li>A list containing the position and ratio for each pseudouridine.</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<img alt="../_images/q27.jpg" src="../_images/q27.jpg" />
+</div>
+</div>
+<div class="section" id="how-cmrs-visualization-to-examine-their-distribution">
+<h3><a class="toc-backref" href="#id12">How CMRs visualization to examine their distribution ?</a><a class="headerlink" href="#how-cmrs-visualization-to-examine-their-distribution" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><strong>Upload</strong> data or add <strong>CMRs visualization</strong> in <strong>Data Libraries</strong> to history</li>
+</ul>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">This section provides examples of the set of data results in data. Due to the long calculation time, please log in and run to prevent the project from being automatically cleaned up.</p>
+</div>
+<ul class="simple">
+<li>Click the <strong>Visualization for Calling</strong> and select tool <strong>CMRs Distribution</strong>.</li>
+<li><dl class="first docutils">
+<dt>Input:</dt>
+<dd><ul class="first last">
+<li>CMR region : The CMR data must be in a tabular file (as bed) with at least 3 columns of data for each CMR (one CMR per line).</li>
+<li>Reference GFF : The annotion file requires the standard gff/gff3 format, recommended download from ensemble plant database.</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Output</dt>
+<dd><ul class="first last">
+<li>CMRs distributions at different levels including chromosome, gene, RNA feature and transcript level.(PDF format)</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<img alt="../_images/q20.jpg" src="../_images/q20.jpg" />
+<p>The distributions plot should look like this:</p>
+<img alt="../_images/q21.jpg" src="../_images/q21.jpg" />
+</div>
+<div class="section" id="i-have-a-known-motif-how-to-check-the-distribution-of-this-motif-in-a-set-of-data">
+<h3><a class="toc-backref" href="#id13">I have a known motif, how to check the distribution of this motif in a set of data ?</a><a class="headerlink" href="#i-have-a-known-motif-how-to-check-the-distribution-of-this-motif-in-a-set-of-data" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><strong>Upload</strong> data or add <strong>Known motif</strong> in <strong>Data Libraries</strong> to history</li>
+</ul>
+<ul class="simple">
+<li>Click the <strong>Convert Sequence</strong> and select tool <strong>Extract Sequence</strong>.</li>
+<li><dl class="first docutils">
+<dt>Input:</dt>
+<dd><ul class="first last">
+<li>CMR region : The CMR data must be in a tabular file (as bed) with at least 3 columns of data for each CMR (one CMR per line).</li>
+<li>Reference genome: Reference genome used in alignment.</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Output</dt>
+<dd><ul class="first last">
+<li>Sequence: Generated motif sequence.</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<img alt="content/../images/28.jpg" src="content/../images/28.jpg" />
+<ul class="simple">
+<li>Click the <strong>Visualization for Calling</strong> and select tool <strong>Sequence Visualization</strong>.</li>
+<li><dl class="first docutils">
+<dt>Input:</dt>
+<dd><ul class="first last">
+<li>The plot sequence: Visualization sequence to be analyzed</li>
+<li>The background sequence: Input sequence when performing two sets of sequence difference composition analysis.(Fill in the same sequence without reference in this example)</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Output</dt>
+<dd><ul class="first last">
+<li>Known motif logo.(PDF format)</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<img alt="content/../images/29.jpg" src="content/../images/29.jpg" />
+<p>The Known motif logo plot should look like this:</p>
+<img alt="content/../images/30.jpg" src="content/../images/30.jpg" />
+</div>
+<div class="section" id="how-to-perform-de-novo-motifs-discovery-analysis">
+<h3><a class="toc-backref" href="#id14">How to perform de-novo motifs discovery analysis?</a><a class="headerlink" href="#how-to-perform-de-novo-motifs-discovery-analysis" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><strong>Upload</strong> data or add <strong>De-novo motifs discovery</strong> in <strong>Data Libraries</strong> to history</li>
+</ul>
+<ul class="simple">
+<li>Click the <strong>CMR Annotation</strong> and select tool <strong>De-novo Motifs Discovery</strong>.</li>
+<li><dl class="first docutils">
+<dt>Input:</dt>
+<dd><ul class="first last">
+<li>CMR region : A tab seperated matrix</li>
+<li>Reference GFF : The annotion file requires the standard gff/gff3 format, recommended download from ensemble plant database.</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Output</dt>
+<dd><ul class="first last">
+<li>CMRs distributions at different levels including chromosome, gene, RNA feature and transcript level.(PDF format)</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<img alt="../_images/q23.jpg" src="../_images/q23.jpg" />
+<p>The distributions plot should look like this:</p>
+<img alt="../_images/q24.jpg" src="../_images/q24.jpg" />
+</div>
+<div class="section" id="how-to-get-a-quantified-level-of-modification">
+<h3><a class="toc-backref" href="#id15">How to get a quantified level of modification ?</a><a class="headerlink" href="#how-to-get-a-quantified-level-of-modification" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><strong>Upload</strong> data or add <strong>Quantification</strong> in <strong>Data Libraries</strong> to history</li>
+</ul>
+<ul class="simple">
+<li>Click the <strong>CMR Profiling and Differential CMR Analysis</strong> and select tool <strong>Quantify Measure</strong>.</li>
+<li><dl class="first docutils">
+<dt>Input:</dt>
+<dd><ul class="first last">
+<li>Input sample: The input control experiment in BAM format.</li>
+<li>RIP sample: The RIP experiment in BAM format.</li>
+<li>Peaks: The peak regions in BED format.</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Output</dt>
+<dd><ul class="first last">
+<li>A tab seperated matrix containing eight columns ( “MFPKM_FC” “MFPKM_ip” “Reads_ip” “MFPKM_input” “Reads_input “Reads_FC” “log10.p” “log10.fdr”)</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<img alt="content/../images/31.jpg" src="content/../images/31.jpg" />
+</div>
+<div class="section" id="i-have-multiple-duplicate-samples-and-stress-experiments-how-to-get-a-differential-modification-information">
+<h3><a class="toc-backref" href="#id16">I have multiple duplicate samples and stress experiments, how to get a differential modification information ?</a><a class="headerlink" href="#i-have-multiple-duplicate-samples-and-stress-experiments-how-to-get-a-differential-modification-information" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><strong>Upload</strong> data or add <strong>Multi-experiment</strong> in <strong>Data Libraries</strong> to history</li>
+</ul>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">This section provides examples of the set of data results in data. Due to the long calculation time, please log in and run to prevent the project from being automatically cleaned up.</p>
+</div>
+<ul class="simple">
+<li>Click the <strong>CMR Profiling and Differential CMR Analysis</strong> and select tool <strong>Differential CMRs analysis</strong>.</li>
+<li><dl class="first docutils">
+<dt>Input (Four group):</dt>
+<dd><ul class="first last">
+<li>Name: The experiment name.</li>
+<li>Replicate: The replicate name.</li>
+<li>Peak files: The peak regions in BED format.</li>
+<li>RIP BAM files: The RIP experiment in BAM format.</li>
+<li>Input BAM files: The input control experiment in BAM format.</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Output</dt>
+<dd><ul class="first last">
+<li>a table of differentially CMRs in Interval, BED format</li>
+<li>a PDF of plots (Heatmap, PCA, Boxplots)</li>
+<li>an RData file of the R objects generated</li>
+<li>a text file with information on the analysis (number of Intervals, FriP scores, method used)</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<img alt="content/../images/32.jpg" src="content/../images/32.jpg" />
+<p>The plot should look like this:</p>
+<img alt="content/../images/33.jpg" src="content/../images/33.jpg" />
+<p>The differentially CMRs table should look like this:</p>
+<img alt="content/../images/34.jpg" src="content/../images/34.jpg" />
+</div>
+<div class="section" id="how-to-annotate-the-cmrs-region">
+<h3><a class="toc-backref" href="#id17">How to annotate the CMRs region?</a><a class="headerlink" href="#how-to-annotate-the-cmrs-region" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><strong>Upload</strong> data or add <strong>Annotation</strong> in <strong>Data Libraries</strong> to history</li>
+</ul>
+<ul class="simple">
+<li>Click the <strong>CMR Annotation</strong> and select tool <strong>Gene Annotation for CMRs</strong>.</li>
+<li><dl class="first docutils">
+<dt>Input:</dt>
+<dd><ul class="first last">
+<li>CMR region :  The CMR data must be in a tabular file (as bed) with at least 3 columns of data for each CMR</li>
+<li>Reference GFF :  The annotion file requires the standard gff/gff3 format, recommended download from ensemble plant database.</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Output</dt>
+<dd><ul class="first last">
+<li>Gene annotation table</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<img alt="content/../images/35.jpg" src="content/../images/35.jpg" />
+<ul class="simple">
+<li>Click the <strong>CMR Annotation</strong> and select tool <strong>Transcriptome Annotation</strong>.</li>
+<li><dl class="first docutils">
+<dt>Input:</dt>
+<dd><ul class="first last">
+<li>CMR region :  The CMR data must be in a tabular file (as bed) with at least 3 columns of data for each CMR</li>
+<li>Reference GFF :  The annotion file requires the standard gff/gff3 format, recommended download from ensemble plant database.</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Output</dt>
+<dd><ul class="first last">
+<li>Transcriptome annotation table</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<img alt="content/../images/36.jpg" src="content/../images/36.jpg" />
+</div>
+<div class="section" id="how-to-predict-modification-driven-genes-and-associated-networks">
+<h3><a class="toc-backref" href="#id18">How to predict modification driven genes and associated networks ?</a><a class="headerlink" href="#how-to-predict-modification-driven-genes-and-associated-networks" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><strong>Upload</strong> data or add <strong>Annotation</strong> in <strong>Data Libraries</strong> to history</li>
+</ul>
+<ul class="simple">
+<li>Click the <strong>CMR Annotation</strong> and select tool <strong>Modification Driver Network analyze</strong>.</li>
+<li><dl class="first docutils">
+<dt>Input:</dt>
+<dd><ul class="first last">
+<li>Gene-Gene/Protein-Protein interaction network : Species name to be analyzed</li>
+<li>Gene list : List of genes to be analyzed, only the first column wiil be analyzed.</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Output</dt>
+<dd><ul class="first last">
+<li>Modification driver gene list</li>
+<li>Modification driver Network (PDF format)</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<img alt="content/../images/37.jpg" src="content/../images/37.jpg" />
+<p>The Modification driver Network should look like this:</p>
+<img alt="content/../images/38.jpg" src="content/../images/38.jpg" />
+</div>
+<div class="section" id="how-to-perform-functional-enrichment-analyze-for-cmr-related-gene">
+<h3><a class="toc-backref" href="#id19">How to perform functional enrichment analyze for CMR related gene?</a><a class="headerlink" href="#how-to-perform-functional-enrichment-analyze-for-cmr-related-gene" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><strong>Upload</strong> data or add <strong>Functional Enrichment Analyze</strong> in <strong>Data Libraries</strong> to history</li>
+</ul>
+<ul class="simple">
+<li>Click the <strong>CMR Annotation</strong> and select tool <strong>Modification Driver Network analyze</strong>.</li>
+<li><dl class="first docutils">
+<dt>Input:</dt>
+<dd><ul class="first last">
+<li>The species name : Species name to be analyzed</li>
+<li>The modification gene list : List of genes to be analyzed, only the first column wiil be analyzed.</li>
+<li>The type of gene names coding (Orgdb support) : Type of gene name，support : TAIR, ENTREZID, ENSEMBL, GO</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Output</dt>
+<dd><ul class="first last">
+<li>Table_GO - Q-value ascending GO terms.</li>
+<li>Table_Kegg - Q-value ascending GO terms.</li>
+<li>Figure_GO - Bar plot and Dot plot and Enrichment Map</li>
+<li>Figure_GO_level - Equal level of GO enrichment</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<img alt="content/../images/39.jpg" src="content/../images/39.jpg" />
+<p>The Figure_GO should look like this:</p>
+<img alt="content/../images/40.jpg" src="content/../images/40.jpg" />
+</div>
+</div>
+<div class="section" id="advanced-analysis">
+<h2><a class="toc-backref" href="#id20">Advanced ANALYSIS</a><a class="headerlink" href="#advanced-analysis" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="i-have-interval-information-for-cmrs-how-to-get-his-precise-position">
+<h3><a class="toc-backref" href="#id21">I have interval information for CMRs, how to get his precise position ?</a><a class="headerlink" href="#i-have-interval-information-for-cmrs-how-to-get-his-precise-position" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><strong>Upload</strong> data or add <strong>Precisely localize CMRs</strong> in <strong>Data Libraries</strong> to history</li>
+</ul>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">This section provides examples of the set of data results in data. Due to the long calculation time, please log in and run to prevent the project from being automatically cleaned up.</p>
+</div>
+<ul class="simple">
+<li>Click the <strong>Machine learning based CMR Prediction</strong> and select tool <strong>Precisely localize CMRs from peaks</strong>.</li>
+<li><dl class="first docutils">
+<dt>Input:</dt>
+<dd><ul class="first last">
+<li>Peak region: The positive bags in BED format generated by peak calling.</li>
+<li>Reference genome: The reference genome sequence in FASTA format.</li>
+<li>Reference annotation file (GTF): The reference annotation file in GTF format.</li>
+<li>Motif: A string specified the motif.</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Output</dt>
+<dd><ul class="first last">
+<li>Model.data: The trained MIL-based model.</li>
+<li>Normalized_parameter.data: The normalized parameters used in model training.</li>
+<li>Prediction_score.txt: The predictive probabilistic score for each instance in bags.</li>
+<li>Reserved_samples.txt: CMRs in single nucleotide resolution.</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<img alt="content/../images/41.jpg" src="content/../images/41.jpg" />
+</div>
+<div class="section" id="how-to-predict-potential-cmrs-in-the-whole-transcribed-region">
+<h3><a class="toc-backref" href="#id22">How to predict potential CMRs in the whole transcribed region ?</a><a class="headerlink" href="#how-to-predict-potential-cmrs-in-the-whole-transcribed-region" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><strong>Upload</strong> data or add <strong>CMRs prediction</strong> in <strong>Data Libraries</strong> to history</li>
+</ul>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">This section provides examples of the set of data results in data. Due to the long calculation time, please log in and run to prevent the project from being automatically cleaned up.</p>
+</div>
+<ul class="simple">
+<li>Click the <strong>Machine learning based CMR Prediction</strong> and select tool <strong>CMR prediction</strong>.</li>
+<li><dl class="first docutils">
+<dt>Input:</dt>
+<dd><ul class="first last">
+<li>Reference genome: The reference genome sequence in FASTA format.</li>
+<li>Reference annotation file (GTF): The reference annotation file in GTF format.</li>
+<li>Model: The MIL-based model generated by module Machine learning based CMR Prediction.</li>
+<li>The normalized parameter file: The normalized parameters generated by module Machine learning based CMR Prediction.</li>
+<li>Motif: A string specified the motif.</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Output</dt>
+<dd><ul class="first last">
+<li>Predicted CMR.txt: The predicted CMRs.</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<img alt="content/../images/42.jpg" src="content/../images/42.jpg" />
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../index.html" class="btn btn-neutral" title="DeepEA: a Galaxy-based framework for exploration and large-scale analysis of epitranscriptome sequencing data" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Song Jie
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

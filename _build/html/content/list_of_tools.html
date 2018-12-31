@@ -1,0 +1,352 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>The tools &mdash; DeePEA  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Step-by-step protocols" href="example_usage_within_galaxy.html" />
+    <link rel="prev" title="DeePEA: tools for exploring deep sequencing data" href="../index.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> DeePEA
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">The tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example_usage_within_galaxy.html">Step-by-step protocols</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">DeePEA</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>The tools</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/content/list_of_tools.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="the-tools">
+<h1>The tools<a class="headerlink" href="#the-tools" title="Permalink to this headline">¶</a></h1>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>With the release of deepTools 2.0, we renamed a couple of tools:</p>
+<blockquote>
+<div><ul class="simple">
+<li><strong>heatmapper</strong> to <span class="xref std std-doc">tools/plotHeatmap</span></li>
+<li><strong>profiler</strong> to <span class="xref std std-doc">tools/plotProfile</span></li>
+<li><strong>bamCorrelate</strong> to <span class="xref std std-doc">tools/multiBamSummary</span></li>
+<li><strong>bigwigCorrelate</strong> to <span class="xref std std-doc">tools/multiBigwigSummary</span></li>
+<li><strong>bamFingerprint</strong> to <span class="xref std std-doc">tools/plotFingerprint</span>.</li>
+</ul>
+</div></blockquote>
+<p class="last">For more, see <span class="xref std std-doc">changelog</span>.</p>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="17%" />
+<col width="8%" />
+<col width="17%" />
+<col width="20%" />
+<col width="38%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">tool</th>
+<th class="head">type</th>
+<th class="head">input files</th>
+<th class="head">main output file(s)</th>
+<th class="head">application</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><span class="xref std std-doc">tools/multiBamSummary</span></td>
+<td>data integration</td>
+<td>2 or more BAM</td>
+<td>interval-based table of values</td>
+<td>perform cross-sample analyses of read counts –&gt; plotCorrelation, plotPCA</td>
+</tr>
+<tr class="row-odd"><td><span class="xref std std-doc">tools/multiBigwigSummary</span></td>
+<td>data integration</td>
+<td>2 or more bigWig</td>
+<td>interval-based table of values</td>
+<td>perform cross-sample analyses of genome-wide scores –&gt; plotCorrelation, plotPCA</td>
+</tr>
+<tr class="row-even"><td><span class="xref std std-doc">tools/plotCorrelation</span></td>
+<td>visualization</td>
+<td>bam/multiBigwigSummary output</td>
+<td>clustered heatmap</td>
+<td>visualize the Pearson/Spearman correlation</td>
+</tr>
+<tr class="row-odd"><td><span class="xref std std-doc">tools/plotPCA</span></td>
+<td>visualization</td>
+<td>bam/multiBigwigSummary output</td>
+<td>2 PCA plots</td>
+<td>visualize the principal component analysis</td>
+</tr>
+<tr class="row-even"><td><span class="xref std std-doc">tools/plotFingerprint</span></td>
+<td>QC</td>
+<td>2 BAM</td>
+<td>1 diagnostic plot</td>
+<td>assess enrichment strength of a ChIP sample</td>
+</tr>
+<tr class="row-odd"><td><span class="xref std std-doc">tools/computeGCBias</span></td>
+<td>QC</td>
+<td>1 BAM</td>
+<td>2 diagnostic plots</td>
+<td>calculate the exp. and obs. GC distribution of reads</td>
+</tr>
+<tr class="row-even"><td><span class="xref std std-doc">tools/correctGCBias</span></td>
+<td>QC</td>
+<td>1 BAM, output from computeGCbias</td>
+<td>1 GC-corrected BAM</td>
+<td>obtain a BAM file with reads distributed according to the genome’s GC content</td>
+</tr>
+<tr class="row-odd"><td><span class="xref std std-doc">tools/bamCoverage</span></td>
+<td>normalization</td>
+<td>BAM</td>
+<td>bedGraph or bigWig</td>
+<td>obtain the normalized read coverage of a single BAM file</td>
+</tr>
+<tr class="row-even"><td><span class="xref std std-doc">tools/bamCompare</span></td>
+<td>normalization</td>
+<td>2 BAM</td>
+<td>bedGraph or bigWig</td>
+<td>normalize 2 files to each other (e.g. log2ratio, difference)</td>
+</tr>
+<tr class="row-odd"><td><span class="xref std std-doc">tools/computeMatrix</span></td>
+<td>data integration</td>
+<td>1 or more bigWig, 1 or more BED</td>
+<td>zipped file for plotHeatmap or plotProfile</td>
+<td>compute the values needed for heatmaps and summary plots</td>
+</tr>
+<tr class="row-even"><td><span class="xref std std-doc">tools/estimateReadFiltering</span></td>
+<td>information</td>
+<td>1 or more BAM files</td>
+<td>table of values</td>
+<td>estimate the number of reads filtered from a BAM file or files</td>
+</tr>
+<tr class="row-odd"><td><span class="xref std std-doc">tools/alignmentSieve</span></td>
+<td>QC</td>
+<td>1 BAM file</td>
+<td>1 filtered BAM or BEDPE file</td>
+<td>filters a BAM file based on one or more criteria</td>
+</tr>
+<tr class="row-even"><td><span class="xref std std-doc">tools/plotHeatmap</span></td>
+<td>visualization</td>
+<td>computeMatrix output</td>
+<td>heatmap of read coverages</td>
+<td>visualize the read coverages for genomic regions</td>
+</tr>
+<tr class="row-odd"><td><span class="xref std std-doc">tools/plotProfile</span></td>
+<td>visualization</td>
+<td>computeMatrix output</td>
+<td>summary plot (“meta-profile”)</td>
+<td>visualize the average read coverages over a group of genomic regions</td>
+</tr>
+<tr class="row-even"><td><span class="xref std std-doc">tools/plotCoverage</span></td>
+<td>visualization</td>
+<td>1 or more BAM</td>
+<td>2 diagnostic plots</td>
+<td>visualize the average read coverages over sampled genomic  positions</td>
+</tr>
+<tr class="row-odd"><td><span class="xref std std-doc">tools/bamPEFragmentSize</span></td>
+<td>information</td>
+<td>1  BAM</td>
+<td>text with paired-end fragment length</td>
+<td>obtain the average fragment length from paired ends</td>
+</tr>
+<tr class="row-even"><td><span class="xref std std-doc">tools/plotEnrichment</span></td>
+<td>visualization</td>
+<td>1 or more BAM and 1 or more BED/GTF</td>
+<td>A diagnostic plot</td>
+<td>plots the fraction of alignments overlapping the given features</td>
+</tr>
+<tr class="row-odd"><td><span class="xref std std-doc">tools/computeMatrixOperations</span></td>
+<td>miscellaneous</td>
+<td>1 or more BAM and 1 or more BED/GTF</td>
+<td>A diagnostic plot</td>
+<td>plots the fraction of alignments overlapping the given features</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="example_usage_within_galaxy.html" class="btn btn-neutral float-right" title="Step-by-step protocols" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../index.html" class="btn btn-neutral" title="DeePEA: tools for exploring deep sequencing data" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Song Jie
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
