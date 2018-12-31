@@ -1,7 +1,7 @@
-Step-by-step protocols
-========================
+DeepEA: a Galaxy-based framework for Galaxy-based framework for exploration and large-scale analysis of epitranscriptome sequencing data.
+=========================================================================================================================================
 
-This section should give you an overview of how to do many common tasks. We're using screenshots from Galaxy here.
+This tutorial will give you an overview about how to use DeepEA. Lots of screenshots are shown here to show the detailed usage of DeepEA.
 
 .. note:: Do let us know if you spot things that are missing or should be explained better! Just send an email to q2516581@126.com
 
@@ -17,7 +17,7 @@ The tool is still in beta, there may be unstable connections or other conditions
 PRE-ANALYSIS
 -----------------------
 
-How do I **import the data** provided by the server, and how do I verify that my input/output is the same as the sample data ?
+How do I **import the data** provided by the server, and how do I verify that my input/output is correct ?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 * Click the **Share Data** → **Data Libraries** in the top bar.
@@ -48,7 +48,7 @@ I have downloaded/received a sra/bam/fa/txt... file - How to upload local data ?
 
 .. image:: ../images/q2.jpg
 
-- Next, Click the button **Choose local file** and select a file you would like to upload , you will see the following interface:
+- Next, Click the button **Choose local file** and select a file you would like to upload, you will see the following interface:
   
 .. image:: ../images/q3.jpg
 
@@ -57,7 +57,7 @@ I have downloaded/received a sra/bam/fa/txt... file - How to upload local data ?
 
 -----------------------------------------
 
-How to download and extract data from Short Reads Achive (SRA database) ?
+How to download and extract data from Short Reads Achive (SRA database)?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 * Click the **Sequence Data Preparation** and select tool **Download Sequence or Annotation File**.
@@ -127,7 +127,7 @@ How to perform sequence alignment ?
 
 
 
-How to obtain the identify CMRs?
+How to perform CMR Calling?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The MeRIP-seq data
@@ -172,7 +172,7 @@ The Pseudo-seq data
 
 - **Upload** data or add **CMR Calling from the Pseudo-seq data** in **Data Libraries** to history
 
-.. tip:: This section provides examples of the set of data results in data. Due to the long calculation time, please log in and run to prevent the project from being automatically cleaned up.
+.. tip:: This section would cost **several hours**. In order to enable users to quickly understand the output，we uploaded the output in the **Shared Data** (named as **5 CMR Calling from the pseudo-seq data**), see section 1 to see how to import the outputs into History.
 
 * Click the **CMR Profiling and Differential CMR Analysis** and select tool **Calling pseudoU**.
 
@@ -187,17 +187,17 @@ The Pseudo-seq data
 
 
 
-How CMRs visualization to examine their distribution ?
+How to visualize CMRs distributions?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 - **Upload** data or add **CMRs visualization** in **Data Libraries** to history
 
-.. tip:: This section provides examples of the set of data results in data. Due to the long calculation time, please log in and run to prevent the project from being automatically cleaned up.
+.. tip:: This section would cost **tens of minutes**. In order to enable users to quickly understand the output，we uploaded the output in the **Shared Data** (named as **7 CMRs visualization**), see section 1 to see how to import the outputs into History.
 
 * Click the **Visualization for Calling** and select tool **CMRs Distribution**.
 
 * Input:
-    * CMR region : The CMR data must be in a tabular file (as bed) with at least 3 columns of data for each CMR (one CMR per line).
+    * CMR region : A tab seperated matrix in BED format.
     * Reference GFF : The annotion file requires the standard gff/gff3 format, recommended download from ensemble plant database.
 
 * Output
@@ -210,7 +210,7 @@ The distributions plot should look like this:
 .. image:: ../images/q21.jpg
 
 
-I have a known motif, how to check the distribution of this motif in a set of data ?
+I have a known motif, how to check the distribution of this motif in peaks?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 - **Upload** data or add **Known motif** in **Data Libraries** to history
@@ -218,7 +218,7 @@ I have a known motif, how to check the distribution of this motif in a set of da
 * Click the **Convert Sequence** and select tool **Extract Sequence**.
 
 * Input:
-    * CMR region : The CMR data must be in a tabular file (as bed) with at least 3 columns of data for each CMR (one CMR per line).
+    * CMR region : A tab seperated matrix in BED format.
     * Reference genome: Reference genome used in alignment.
 
 * Output
@@ -230,7 +230,7 @@ I have a known motif, how to check the distribution of this motif in a set of da
 * Click the **Visualization for Calling** and select tool **Sequence Visualization**.
 
 * Input:
-    * The plot sequence: Visualization sequence to be analyzed
+    * The plot sequence: The FASTA formatted sequence to be analyzed.
     * The background sequence: Input sequence when performing two sets of sequence difference composition analysis.(Fill in the same sequence without reference in this example)
 
 * Output
@@ -245,7 +245,7 @@ The Known motif logo plot should look like this:
 
 
 
-How to perform de-novo motifs discovery analysis?
+How to perform de-novo motifs discovery?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 - **Upload** data or add **De-novo motifs discovery** in **Data Libraries** to history
@@ -253,11 +253,11 @@ How to perform de-novo motifs discovery analysis?
 * Click the **CMR Annotation** and select tool **De-novo Motifs Discovery**.
 
 * Input:
-    * CMR region : A tab seperated matrix
-    * Reference GFF : The annotion file requires the standard gff/gff3 format, recommended download from ensemble plant database.
+    * CMR region : A tab seperated matrix in BED format.
+    * Reference GFF : The reference annotation file in GTF format.
 
 * Output
-    * CMRs distributions at different levels including chromosome, gene, RNA feature and transcript level.(PDF format)
+    * Motif annotaion files and discovered motif weblogo images.
 
 .. image:: ../images/q23.jpg
 
@@ -266,7 +266,7 @@ The distributions plot should look like this:
 .. image:: ../images/q24.jpg
 
 
-How to get a quantified level of modification ?
+How to obtain the CMR modification level?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 - **Upload** data or add **Quantification** in **Data Libraries** to history
@@ -286,12 +286,13 @@ How to get a quantified level of modification ?
 
 
 
-I have multiple duplicate samples and stress experiments, how to get a differential modification information ?
+I have multiple replicates and stress experiments, how to perform differential modification analysis?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 - **Upload** data or add **Multi-experiment** in **Data Libraries** to history
 
-.. tip:: This section provides examples of the set of data results in data. Due to the long calculation time, please log in and run to prevent the project from being automatically cleaned up.
+.. tip:: This section would cost **tens of minutes**. In order to enable users to quickly understand the output，we uploaded the output in the **Shared Data** (named as **17 The differential CMR modification**), see section 1 to see how to import the outputs into History.
+
 
 * Click the **CMR Profiling and Differential CMR Analysis** and select tool **Differential CMRs analysis**.
 
@@ -303,10 +304,10 @@ I have multiple duplicate samples and stress experiments, how to get a different
     * Input BAM files: The input control experiment in BAM format.
 
 * Output
-    * a table of differentially CMRs in Interval, BED format
-    * a PDF of plots (Heatmap, PCA, Boxplots)
-    * an RData file of the R objects generated
-    * a text file with information on the analysis (number of Intervals, FriP scores, method used)
+    * a table of differentially CMRs in BED format
+    * a PDF of plots (Heatmap, PCA plot, Boxplot)
+    * an R object with RData format
+    * a TAB seperated text file with three columns (number of Intervals, FriP scores, method used)
 
 .. image:: ../images/32.jpg
 
@@ -320,7 +321,7 @@ The differentially CMRs table should look like this:
 
 
 
-How to annotate the CMRs region?
+How to perform CMRs annotation?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 - **Upload** data or add **Annotation** in **Data Libraries** to history
@@ -328,8 +329,8 @@ How to annotate the CMRs region?
 * Click the **CMR Annotation** and select tool **Gene Annotation for CMRs**.
 
 * Input:
-    * CMR region :  The CMR data must be in a tabular file (as bed) with at least 3 columns of data for each CMR
-    * Reference GFF :  The annotion file requires the standard gff/gff3 format, recommended download from ensemble plant database.
+    * CMR region :  A TAB seperated matrix in BED format.
+    * Reference GFF :  The reference genome annotation file in GTF format.
 
 * Output
     * Gene annotation table	
@@ -340,8 +341,8 @@ How to annotate the CMRs region?
 * Click the **CMR Annotation** and select tool **Transcriptome Annotation**.
 
 * Input:
-    * CMR region :  The CMR data must be in a tabular file (as bed) with at least 3 columns of data for each CMR
-    * Reference GFF :  The annotion file requires the standard gff/gff3 format, recommended download from ensemble plant database.
+    * CMR region :  A TAB seperated matrix in BED format.
+    * Reference GFF :  The reference genome annotaion file in GTF format.
 
 * Output
     * Transcriptome annotation table	
@@ -349,42 +350,41 @@ How to annotate the CMRs region?
 .. image:: ../images/36.jpg
 
 
-How to predict modification driven genes and associated networks ?
+How to predict CMR-driven genes interaction networks ?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 - **Upload** data or add **Annotation** in **Data Libraries** to history
 
-* Click the **CMR Annotation** and select tool **Modification Driver Network analyze**.
+* Click the **CMR Annotation** and select tool **CMR-Drivern Network analysis**.
 
 * Input:
-    * Gene-Gene/Protein-Protein interaction network : Species name to be analyzed
-    * Gene list : List of genes to be analyzed, only the first column wiil be analyzed.
+    * Gene-Gene/Protein-Protein interaction network : A TAB seperated matrix of two columns, each column represent a node in the network. Each line indicates a link.
+    * Gene list : List of genes to be analyzed, only the first column will be analyzed.
 
 
 * Output
-    * Modification driver gene list 
-    * Modification driver Network (PDF format)
+    * CMR-driven gene list 
+    * CMR-driven Network (PDF format)
 
 .. image:: ../images/37.jpg
 
-The Modification driver Network should look like this:
+The CMR-driven Network should look like this:
 
 .. image:: ../images/38.jpg
 
 
 
-How to perform functional enrichment analyze for CMR related gene?
+How to perform functional enrichment analysis for CMR related gene?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 - **Upload** data or add **Functional Enrichment Analyze** in **Data Libraries** to history
 
-* Click the **CMR Annotation** and select tool **Modification Driver Network analyze**.
+* Click the **CMR Annotation** and select tool **CMR-Driven Network analysis**.
 
 * Input:
-    * The species name : Species name to be analyzed
-    * The modification gene list : List of genes to be analyzed, only the first column wiil be analyzed.
-    * The type of gene names coding (Orgdb support) : Type of gene name，support : TAIR, ENTREZID, ENSEMBL, GO
-
+    * The species name: Input the species name.
+    * The modification gene list: List of genes to be analyzed, only the first column will be analyzed.
+    * The type of gene names coding (Orgdb support): Select the gene name coding method.
 
 
 * Output
@@ -404,11 +404,11 @@ The Figure_GO should look like this:
 Advanced ANALYSIS
 -----------------------
 
-I have interval information for CMRs, how to get his precise position ?
+I have peak regions of CMRs, how to obtain its precise position?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 - **Upload** data or add **Precisely localize CMRs** in **Data Libraries** to history
 
-.. tip:: This section provides examples of the set of data results in data. Due to the long calculation time, please log in and run to prevent the project from being automatically cleaned up.
+.. tip:: This section would cost **several hours**. In order to enable users to quickly understand the output，we uploaded the output in the **Shared Data** (named as **15 Precisely localize CMRs**), see section 1 to see how to import the outputs into History.
 
 * Click the **Machine learning based CMR Prediction** and select tool **Precisely localize CMRs from peaks**.
 
@@ -433,7 +433,7 @@ How to predict potential CMRs in the whole transcribed region ?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 - **Upload** data or add **CMRs prediction** in **Data Libraries** to history
 
-.. tip:: This section provides examples of the set of data results in data. Due to the long calculation time, please log in and run to prevent the project from being automatically cleaned up.
+.. tip:: This section would cost **several hours**. In order to enable users to quickly understand the output，we uploaded the output in the **Shared Data** (named as **16 CMRs prediction**), see section 1 to see how to import the outputs into History.
 
 * Click the **Machine learning based CMR Prediction** and select tool **CMR prediction**.
 
